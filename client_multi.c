@@ -40,9 +40,10 @@ int main()
 	printf("\nConnection Established\n");
 	printf("\nEnter the number : ");
 	scanf("%s", buffer);
-	send(sockfd, buffer, strlen(buffer), 0);
+	send(sockfd, buffer, BUFFER_SIZE, 0);
 	printf("\nNumber is sent\n");
-	read(sockfd, buffer, strlen(buffer));
+	memset(buffer, 0, BUFFER_SIZE*sizeof(buffer[0]));
+	read(sockfd, buffer, BUFFER_SIZE);
 	printf("The squared number is : %s \n", buffer);
 	
 }
